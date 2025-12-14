@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/eda_cli/__init__.py
+src/eda_cli/cli.py
+src/eda_cli/core.py
+src/eda_cli/viz.py
+src/s03.egg-info/PKG-INFO
+src/s03.egg-info/SOURCES.txt
+src/s03.egg-info/dependency_links.txt
+src/s03.egg-info/entry_points.txt
+src/s03.egg-info/requires.txt
+src/s03.egg-info/top_level.txt
+tests/test_core.py
