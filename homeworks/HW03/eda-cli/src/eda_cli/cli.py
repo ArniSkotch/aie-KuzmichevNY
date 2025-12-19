@@ -116,6 +116,18 @@ def report(
         f.write(f"- Слишком много колонок: **{quality_flags['too_many_columns']}**\n")
         f.write(f"- Слишком много пропусков: **{quality_flags['too_many_missing']}**\n\n")
 
+        f.write("### Новые эвристики качества\n\n")
+        f.write(f"- Есть константные столбцы: **{quality_flags['has_constant_columns']}**\n")
+        if quality_flags['has_constant_columns']:
+            f.write(f"  - Количество константных столбцов: {quality_flags['constant_columns_count']}\n")
+            f.write(f"  - Имена константных столбцов: {', '.join(quality_flags['constant_columns_names'])}\n")
+
+        f.write(f"- Есть категориальные признаки с высокой кардинальностью: **{quality_flags['has_high_cardinality_categoricals']}**\n")
+        if quality_flags['has_high_cardinality_categoricals']:
+            f.write(f"  - Количество таких столбцов: {quality_flags['high_cardinality_columns_count']}\n")
+            f.write(f"  - Имена столбцов: {', '.join(quality_flags['high_cardinality_columns_names'])}\n")
+        f.write("\n")
+
         f.write("## Колонки\n\n")
         f.write("См. файл `summary.csv`.\n\n")
 
