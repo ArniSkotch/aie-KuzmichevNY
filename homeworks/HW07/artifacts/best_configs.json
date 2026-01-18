@@ -1,0 +1,14 @@
+{
+    "dataset-01": {
+        "model": "KMeans",
+        "param": 2
+    },
+    "dataset-02": {
+        "model": "DBSCAN",
+        "param": 0.3
+    },
+    "dataset-04": {
+        "model": "KMeans",
+        "param": 5
+    }
+}
