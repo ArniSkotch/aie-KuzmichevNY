@@ -1,0 +1,19 @@
+{
+  "model": "MLP_large",
+  "hidden_sizes": [
+    256,
+    128,
+    64
+  ],
+  "activation": "ReLU",
+  "dropout": 0.0,
+  "batchnorm": true,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "seed": 17,
+  "dataset": "EMNIST",
+  "best_val_accuracy": 85.26,
+  "best_epoch": 16,
+  "test_accuracy": 85.06
+}

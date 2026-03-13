@@ -1,0 +1,8 @@
+experiment_id,dataset,seed,model_summary,optimizer,lr,momentum,weight_decay,epochs_trained,best_val_accuracy,best_val_loss
+E1,EMNIST,17,"MLP_large [256,128,64], ReLU, no dropout, no batchnorm",Adam,0.001,,0.0,10,83.43,
+E2,EMNIST,17,"MLP_large [256,128,64], ReLU, dropout=0.3, no batchnorm",Adam,0.001,,0.0,10,83.56,
+E3,EMNIST,17,"MLP_large [256,128,64], ReLU, no dropout, batchnorm",Adam,0.001,,0.0,10,84.84,
+E4,EMNIST,17,"MLP_large [256,128,64], ReLU, no dropout, batchnorm",Adam,0.001,,0.0,19,85.26,
+O1,EMNIST,17,"MLP_large [256,128,64], ReLU, no dropout, batchnorm",Adam,1.0,,0.0,8,2.07,
+O2,EMNIST,17,"MLP_large [256,128,64], ReLU, no dropout, batchnorm",Adam,1e-07,,0.0,8,3.85,
+O3,EMNIST,17,"MLP_large [256,128,64], ReLU, no dropout, batchnorm",SGD,0.01,0.9,0.0001,10,84.81,
