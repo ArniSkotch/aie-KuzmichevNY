@@ -1,0 +1,9 @@
+{
+    "experiment_id": "C4",
+    "dataset": "CIFAR100",
+    "architecture": "ResNet",
+    "num_epochs": 12,
+    "lr": 0.0001,
+    "seed": 42,
+    "transforms": "resnet_transform"
+}
