@@ -1,0 +1,5 @@
+experiment_id,task,dataset,seed,split_summary,window_size,horizon,model_summary,features_summary,scaler,optimizer,lr,epochs_trained,best_val_mae,best_val_rmse,best_val_mape,test_mae,test_rmse,test_mape,notes
+B1,forecasting,S12-hw-dataset.csv,42,70% / 15% / 15% (temporal),,1,Naive Last,lag_1,,,,,6.444814814814815,67.2567774691358,0.0439792166354992,,,,Наивный прогноз
+B2,forecasting,S12-hw-dataset.csv,42,70% / 15% / 15% (temporal),,1,MA_7,rolling_mean_7,,,,,12.702012786596118,231.57670494142099,0.0881686403093607,,,,Скользящее среднее
+B3,forecasting,S12-hw-dataset.csv,42,70% / 15% / 15% (temporal),,1,Ridge(alpha=1.0),lags+rolling+calendar,StandardScaler,,,,7.188729774210058,76.25274642965567,0.047966889202939886,,,,Ridge Regression
+R1,forecasting,S12-hw-dataset.csv,42,70% / 15% / 15% (temporal),14,1,GRU_1_layer,target_window,StandardScaler,Adam,0.001,30,6.060346195930938,59.59508112399833,0.04051835764511279,6.888948470636121,75.00928901801382,0.044204395864680175,Нейросеть GRU
