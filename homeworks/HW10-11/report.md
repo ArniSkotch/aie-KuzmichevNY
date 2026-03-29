@@ -51,18 +51,10 @@
 
 ## 5. Часть B: постановка задачи и режимы оценки (V1-V2)
 
-### Если выбран detection track
-
-- Модель:
-- V1: `score_threshold = 0.3`
-- V2: `score_threshold = 0.7`
-- Как считался IoU:
-- Как считались precision / recall:
-
 ### Если выбран segmentation track
 
 - Модель:
-- Что считается foreground: маска питомца
+- Что считается foreground: маска питомца (foreground id = 1)
 - V1: базовая постобработка (бинаризация предсказаний)
 - V2: альтернативная постобработка (морфологическая очистка с помощью max-pooling)
 - Как считался mean IoU: Пересечение масок делилось на их объединение для каждого изображения, затем усреднялось по батчу
@@ -78,7 +70,7 @@
 - Кривые лучшего прогона классификации: `./artifacts/figures/classification_curves_best.png`
 - Сравнение C1-C4: `./artifacts/figures/classification_compare.png`
 - Визуализация аугментаций: `./artifacts/figures/augmentations_preview.png`
-- Визуализации второй части: `./artifacts/figures/segmentation_examples.png`
+- Визуализации второй части: `./artifacts/figures/segmentation_examples.png`, `./artifacts/figures/segmentation_metrics.png`
 
 Короткая сводка (6-10 строк):
 
