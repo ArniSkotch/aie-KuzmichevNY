@@ -1,0 +1,4 @@
+query,expected_source,before_retrieved_sources,after_retrieved_sources,changed
+Как работает транзитный метод поиска?,doc_11,"doc_05, doc_10","doc_11, doc_13",True
+Что такое горизонт событий?,doc_12,"doc_09, doc_01","doc_12, doc_09, doc_13",True
+Какой телескоп запущен в 2021 году?,doc_13,"doc_09, doc_01","doc_13, doc_11, doc_09",True
