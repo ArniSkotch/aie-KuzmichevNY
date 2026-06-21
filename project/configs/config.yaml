@@ -1,0 +1,35 @@
+# Общие настройки проекта.
+# Пути указаны относительно корня проекта (там, откуда запускается код).
+
+paths:
+  dataset_root: "data/raw/timit"          # куда скачивается и распаковывается архив TIMIT
+  input_dir: "data/processed/input_audio"
+  audio_dir: "data/processed/input_audio/audio"
+  annotations_dir: "data/processed/input_audio/annotations"
+  output_dir: "data/processed/output_phonemes"
+  artifacts_dir: "artifacts"
+
+model:
+  model_id: "facebook/wav2vec2-lv-60-espeak-cv-ft"
+  frame_duration: 0.02     # длительность одного фрейма CTC, сек
+  top_db: 35                # порог для librosa.effects.split/trim (отделение тишины)
+
+audio:
+  valid_audio_extensions: [".wav", ".flac", ".ogg", ".mp3"]
+  valid_annotation_extensions: [".json", ".csv", ".txt"]
+  sample_rate: 16000
+
+processing:
+  max_files: 20              # сколько файлов TIMIT конвертировать при первой сборке датасета
+  tolerance_ms: [10, 20, 50]  # допуски для метрик точности границ фонем
+
+service:
+  host: "0.0.0.0"
+  port: 8000
+
+env:
+  hf_endpoint: "https://hf-mirror.com"
+  torchaudio_backend: "soundfile"
+  # Путь к eSpeak NG. На Linux/macOS, как правило, espeak уже виден в PATH,
+  # и эту переменную можно оставить пустой.
+  espeak_path: "C:/Program Files/eSpeak NG"
