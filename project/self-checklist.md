@@ -12,18 +12,18 @@
 
 ## Таблица самопроверки
 
-| #  | Критерий                                                                 | Да/Нет (студент) | Где смотреть / комментарий                          |
-|----|---------------------------------------------------------------------------|------------------|-----------------------------------------------------|
-| 1  | Сервис запускается по инструкциям из `project/README.md` и работает      |                  | Например: `README.md`, раздел «Как запустить»       |
-| 2  | Endpoint `/predict` использует **реальную модель**, а не заглушку        |                  | Например: `src/service/`, `src/models/`             |
-| 3  | Есть EDA и хотя бы один эксперимент с метриками                          |                  | Например: `notebooks/01_eda.ipynb`, `report.md`     |
-| 4  | Есть baseline и улучшенная модель, есть **сравнение по метрикам**        |                  | Например: `notebooks/02_baselines.ipynb`, `report.md` |
-| 5  | Код не свален в один ноутбук: есть внятная структура в `src/`            |                  | Например: `src/data/`, `src/models/`, `src/service/` |
-| 6  | Есть Dockerfile **или** понятный сценарий развёртывания без Docker       |                  | Например: `Dockerfile` или шаги в `README.md`       |
-| 7  | Есть `.env.example` и **нет** в репозитории реальных секретов/паролей    |                  | `.env.example`, `SECURITY.md`, отсутствие `.env`    |
-| 8  | Реализованы логи/наблюдаемость (хотя бы консольные логи + `/health`)     |                  | Например: использование `logging`, endpoint `/health` |
-| 9  | В `report.md` **обоснован выбор финальной модели** по результатам экспериментов |           | `report.md`, разделы про результаты и выбор модели  |
-| 10 | `project/README.md` и `report.md` позволяют понять сценарий демонстрации |                  | Разделы «Как запустить», «Демонстрация на защите»   |
+| #  | Критерий                                                                        | Да/Нет (студент) | Где смотреть / комментарий                          |
+|----|---------------------------------------------------------------------------------|------------------|-----------------------------------------------------|
+| 1  | Сервис запускается по инструкциям из `project/README.md` и работает             |        ✅        | README.md, разделы 3.2 и 4.2: pip install -r requirements.txt, затем python -m src.service.api. Swagger UI на http://localhost:8000/docs. |
+| 2  | Endpoint `/predict` использует **реальную модель**, а не заглушку               |        ✅        | src/service/api.py: загрузка facebook/wav2vec2-lv-60-espeak-cv-ft при старте модуля через load_model(), инференс через Wav2Vec2ForCTC + correct_segment_boundaries(). /health явно возвращает model_loaded: true. |
+| 3  | Есть EDA и хотя бы один эксперимент с метриками                                 |        ✅        | src/eda.py (вызывается из ноутбука notebooks/exp04_voice_phoneme_pipeline.ipynb): распределение длительностей, топ-20 фонем, диалекты, гистограмма PER, boxplot ошибок границ. Метрики: PER, F1, boundary MAE/RMSE, IoU, accuracy@10/20/50 мс. |
+| 4  | Есть baseline и улучшенная модель, есть **сравнение по метрикам**               |        ✅        | src/compare_models.py: baseline (сырые CTC-границы) vs improved (CTC + акустическая коррекция через librosa.effects.split/trim). Результаты — model_comparison.csv/json, model_comparison_plot.png. Обоснование выбора — report.md, разделы 5 и 9. |
+| 5  | Код не свален в один ноутбук: есть внятная структура в `src/`                   |        ✅        | src/data/ (audio_utils, build_dataset, download_timit), src/features/ (annotation_loader), src/models/ (model_loader, inference, metrics), src/service/ (api.py). Конфигурация — config.py, env_setup.py, logging_utils.py. |
+| 6  | Есть Dockerfile **или** понятный сценарий развёртывания без Docker              |        ✅        | Docker отсутствует (честно зафиксировано как ограничение в README.md и report.md). Сценарий без Docker подробно описан в README.md, разделы 3.2 и 4.2: venv, pip install -r requirements.txt, python -m src.service.api. |
+| 7  | Есть `.env.example` и **нет** в репозитории реальных секретов/паролей           |        ✅        | src/setup_project.py создаёт configs/.env.example и добавляет configs/.env в .gitignore. Секреты (Kaggle API) хранятся только в configs/.env, который не коммитится. config.yaml секретов не содержит. |
+| 8  | Реализованы логи/наблюдаемость (хотя бы консольные логи + `/health`)            |        ✅        | src/logging_utils.py: единый setup_logger с форматом %(asctime)s [%(levelname)s]..., используется в api.py, run_pipeline.py, compare_models.py. Endpoint GET /health -> {"status": "ok", "model_loaded": true, "model_id": ...}. |
+| 9  | В `report.md` **обоснован выбор финальной модели** по результатам экспериментов |        ✅        | report.md, разделы 5 и 9: выбор improved (CTC + акустическая коррекция) обоснован конкретными числами — рост Boundary Exact Accuracy @50 мс и Segment IoU; честно указана просадка на допуске 20 мс. Финальный /predict использует именно improved. |
+| 10 | `project/README.md` и `report.md` позволяют понять сценарий демонстрации        |        ✅        | README.md, раздел 7 («Демонстрация на защите»): список шагов, команды запуска. report.md, раздел 9: что запускается, 2 ключевых сценария, на что обратить внимание. |
 
 ---
 

@@ -1,0 +1,29 @@
+# Основные ML/аудио-библиотеки
+torch
+torchvision
+torchaudio
+transformers
+librosa
+soundfile
+
+# Библиотеки токенизации
+phonemizer
+
+# Данные и конфиги
+pandas
+numpy
+matplotlib
+pyyaml
+python-dotenv
+
+# Загрузка датасета TIMIT с Kaggle
+kaggle
+
+# FastAPI-сервис
+fastapi
+uvicorn[standard]
+python-multipart
+nest_asyncio
+
+# Тесты
+pytest
