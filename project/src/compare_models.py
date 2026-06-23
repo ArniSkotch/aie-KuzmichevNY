@@ -318,10 +318,10 @@ def plot_comparison(comparison_df: pd.DataFrame, output_dir: Path, logger) -> No
 
     # (ключ в df, заголовок, lower_better)
     PLOTS = [
-        ("per",                          "PER (↓ лучше)",                        True),
-        ("boundary_exact_accuracy_20ms", "Boundary Exact Accuracy @20 ms (↑)",   False),
-        ("boundary_exact_accuracy_50ms", "Boundary Exact Accuracy @50 ms (↑)",   False),
-        ("segment_iou_mean",             "Segment IoU mean (↑ лучше)",           False),
+        ("per",                          "PER",                        True),
+        ("boundary_exact_accuracy_20ms", "Boundary Exact Accuracy @20 ms",   False),
+        ("boundary_exact_accuracy_50ms", "Boundary Exact Accuracy @50 ms",   False),
+        ("segment_iou_mean",             "Segment IoU mean",           False),
     ]
 
     fig, axes = plt.subplots(2, 2, figsize=(11, 8))
